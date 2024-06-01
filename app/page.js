@@ -1,12 +1,16 @@
-import Image from "next/image";
 import styles from "./page.module.css";
 
 export default function Home() {
   return (
-    <main className={styles.main}>
-      <div>
-        <title>遊び場 GAMES にようこそ！</title>
-      </div>
-    </main>
+    <>
+      <head>
+        <title>遊び場 GAMES</title>
+      </head>
+      <body>
+        <main className={styles.main}>
+          <h1>遊び場 GAMES にようこそ！</h1>
+        </main>
+      </body>
+    </>
   );
 }
