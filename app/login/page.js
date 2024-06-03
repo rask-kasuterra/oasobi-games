@@ -11,23 +11,32 @@ const LoginPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await fetch('/api/auth/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ username, password }),
-    });
+    try {
+      const res = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, password }),
+      });
 
-    const data = await res.json();
+      if (!res.ok) {
+        throw new Error(`HTTP error! status: ${res.status}`);
+      }
 
-    if (res.ok) {
-      localStorage.setItem('authToken', data.token);
-      router.push('/');
-    } else {
-      setError(data.error);
+      const data = await res.json();
+      if (res.ok) {
+        localStorage.setItem('authToken', data.token);
+        router.push('/');
+      } else {
+        setError(data.error);
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      setError('An error occurred while processing your request.');
     }
   };
+
 
   return (
     <form onSubmit={handleSubmit}>
