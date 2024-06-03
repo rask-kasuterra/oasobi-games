@@ -1,3 +1,4 @@
+import Head from "next/head";
 import styles from "./page.module.css";
 import Link from 'next/link';
 
@@ -6,18 +7,16 @@ export default function Home() {
 
   return (
     <>
-      <head>
+      <Head>
         <title>遊び場 GAMES</title>
-      </head>
-      <body>
-        <main className={styles.main}>
-          <h1>遊び場 GAMES にようこそ！</h1>
-          <a href={ticTacToeUrl}>Go to TicTacToe</a>
-          <Link href="/login">
-            <a>Go to Login</a>
-          </Link>
-        </main>
-      </body>
+      </Head>
+      <main className={styles.main}>
+        <h1>遊び場 GAMES にようこそ！</h1>
+        <a href={ticTacToeUrl}>Go to TicTacToe</a>
+        <Link href="/login">
+          <a>Go to Login</a>
+        </Link>
+      </main>
     </>
   );
 }
